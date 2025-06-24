@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stay Focused</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="profile-icon"></div>
+      <div class="title">SERENE FOCUS</div>
+    </div>
+
+    <!-- Timer and Affirmation -->
+    <div class="timer-section">
+      <div class="timer-box">
+        <div class="timer" id="timer">00:30:00</div>
+        <button class="affirmations" onclick="showAffirmation()">Affirmations</button>
+      </div>
+      <div class="playlist">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3HH5R7Bhz21hUL7G16nK8v?utm_source=generator" width="100%" height="155" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        
+      </div>
+      <div class="c"></div>
+    </div>
+
+
+    <!-- To-do and Notes -->
+    <div class="main-section">
+      <div class="todo">
+        <div class="section-title">To Do List</div>
+        <ul class="todo-list" id="todoList">
+          <li><input class="task" type="checkbox" /><input type="text" placeholder="Task 1" /></li>
+          <li><input class="task" type="checkbox" /><input type="text" placeholder="Task 2" /></li>
+          <li><input class="task" type="checkbox" /><input type="text" placeholder="Task 3" /></li>
+          <li><input class="task" type="checkbox" /><input type="text" placeholder="Task 4" /></li>
+        </ul>
+      </div>
+
+      <div class="notes">
+        <div class="section-title">Notes</div>
+        <div class="note-icons">
+          <div class="note">
+            <div class="icon" onclick="triggerFileUpload(0)"><img src="https://i.pinimg.com/736x/7d/c0/c2/7dc0c27cc79de64ef1ecfd3348c8c192.jpg" alt="notebook"></div>
+            <p>course 1</p>
+            <input type="file" class="file-input" style="display: none;" onchange="handleFileUpload(event, 0)" />
+            <p class="file-name" id="fileName0"></p>
+          </div>
+          <div class="note">
+            <div class="icon" onclick="triggerFileUpload(1)"><img src="https://i.pinimg.com/736x/7d/c0/c2/7dc0c27cc79de64ef1ecfd3348c8c192.jpg" alt="notebook"></div>
+            <p>course 2</p>
+            <input type="file" class="file-input" style="display: none;" onchange="handleFileUpload(event, 1)" />
+            <p class="file-name" id="fileName1"></p>
+          </div>
+          <div class="note">
+            <div class="icon" onclick="triggerFileUpload(2)"><img src="https://i.pinimg.com/736x/7d/c0/c2/7dc0c27cc79de64ef1ecfd3348c8c192.jpg" alt="notebook"></div>
+            <p>course 3</p>
+            <input type="file" class="file-input" style="display: none;" onchange="handleFileUpload(event, 2)" />
+            <p class="file-name" id="fileName2"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+  <script>
+    function triggerFileUpload(index) {
+      const fileInputs = document.querySelectorAll('.file-input');
+      if (fileInputs[index]) {
+        fileInputs[index].click();
+      }
+    }
+
+    function handleFileUpload(event, index) {
+      const file = event.target.files[0];
+      if (file) {
+        document.getElementById(`fileName${index}`).textContent = `Uploaded: ${file.name}`;
+      }
+    }
+  </script>
+</body>
+</html>
